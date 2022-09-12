@@ -11,7 +11,7 @@ const connectionString = `postgresql://${process.env.DB_USER}:${process.env.DB_P
 
 
 const pool = new Pool({
-    connectionString: !isProduction ? `postgresql://postgres:${process.env.DB_PROD_PASSWORD}@containers-us-west-56.railway.app:7610/railway`  : connectionString
+    connectionString: isProduction ? `postgresql://postgres:${process.env.DB_PROD_PASSWORD}@containers-us-west-56.railway.app:7610/railway`  : connectionString
 });
 
 export default pool;
