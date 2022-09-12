@@ -21,7 +21,7 @@ const getUsers = (req, res) => {
 
 const addUsers = async (req, res) => {
   const { firstname, lastname, email, password, role, active } = req.body;
-  console.log('request users', req);
+  console.log('request users', req.body);
 
   let errors = [];
 
