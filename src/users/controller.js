@@ -71,13 +71,13 @@ const login = (req, res) => {
   pool.query(queries.checkEmailExists, [email], (err, result) => {
     if (result.rows.length) {
       const user = result.rows[0];
-      console.log("user", user);
+      // console.log("user", user);
 
       bcrypt.compare(password, user.password, (err, isMatch) => {
         if (err) throw err;
         if (isMatch) {
           let token = createToken(user);
-          console.log("token", token);
+          // console.log("token", token);
           res.json({
             token: token,
             data: {
@@ -85,11 +85,11 @@ const login = (req, res) => {
               firstname: user.firstname,
               lastname: user.lastname,
               email: user.email,
-              role: user.role,
+              // role: user.role,
               active: user.active,
               createdAt: user.createdat
             },
-            msg: "Successfully logged in!",
+            msg: "Successfully logged in !",
           });
         } else {
           res.json({
