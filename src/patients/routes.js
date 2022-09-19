@@ -12,12 +12,12 @@ router.post(
 //   upload.array("image",5),
 upload.fields([{
     name: 'image',
-    maxCount: 5
+    maxCount: 10
 }]),
   controller.addPatients
 );
 
-router.put("/patients/:id", authenticate, upload.fields([{ name: 'image', maxCount: 5 }]), controller.updatePatient);
+router.put("/patients/:id", authenticate, upload.fields([{ name: 'image', maxCount: 10 }]), controller.updatePatient);
 router.delete("/patients/:id", authenticate, controller.deletePatient);
 
 export default router;

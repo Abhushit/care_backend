@@ -57,6 +57,8 @@ const addPatients = (req, res) => {
     country,
     district,
     pradesh,
+    city,
+    ward,
     doctor_notes,
     follow_up_dates,
     referred_by,
@@ -103,6 +105,8 @@ const addPatients = (req, res) => {
       country,
       district,
       pradesh,
+      city,
+      ward,
       doctor_notes,
       follow_up_dates,
       referred_by,
@@ -136,6 +140,7 @@ const updatePatient = (req, res) => {
     firstname: "",
     lastname: "",
     dob: "",
+    age: "",
     gender: "",
     phone1: "",
     phone2:"",
@@ -145,6 +150,8 @@ const updatePatient = (req, res) => {
     country: "",
     district: "",
     pradesh: "",
+    city: "",
+    ward: "",
     doctor_notes: "",
     follow_up_dates: "",
     referred_by: "",
@@ -202,6 +209,8 @@ const updatePatient = (req, res) => {
       patientData.country = req.body.country ? req.body.country : result.rows[0].country ; 
       patientData.district = req.body.district ? req.body.district : result.rows[0].district; 
       patientData.pradesh = req.body.pradesh ? req.body.pradesh : result.rows[0].pradesh; 
+      patientData.city = req.body.city ? req.body.city : result.rows[0].city; 
+      patientData.ward = req.body.ward ? req.body.ward : result.rows[0].ward; 
       patientData.doctor_notes = req.body.doctor_notes ? req.body.doctor_notes : result.rows[0].doctor_notes; 
       patientData.follow_up_dates = req.body.follow_up_dates ? req.body.follow_up_dates : result.rows[0].follow_up_dates; 
       patientData.referred_by = req.body.referred_by ? req.body.referred_by : result.rows[0].referred_by; 
@@ -259,6 +268,8 @@ const updatePatient = (req, res) => {
           patientData.country,
           patientData.district,
           patientData.pradesh,
+          patientData.city,
+          patientData.ward,
           patientData.doctor_notes,
           patientData.follow_up_dates,
           patientData.referred_by,
