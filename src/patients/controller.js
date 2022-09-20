@@ -34,9 +34,9 @@ const getSinglePatient = (req, res) => {
 }
 
 const addPatients = (req, res) => {
-  // console.log("file", req.files);
+  console.log("file", req.files);
   // console.log('req',req);
-  // console.log("body", req.body);
+  console.log("body", req.body);
 
   const images = req.files.image;
   let currentImages = [];
@@ -84,6 +84,7 @@ const addPatients = (req, res) => {
       };
     });
   }
+
 
   //   console.log("current images", currentImages);
   // console.log("all documents", allDocuments);
