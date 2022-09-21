@@ -334,5 +334,6 @@ export default {
   getPatients,
   addPatients,
   deletePatient,
-  updatePatient
+  updatePatient,
+  getSinglePatient
 };

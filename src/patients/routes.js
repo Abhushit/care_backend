@@ -6,6 +6,7 @@ import controller from "./controller.js";
 const router = Router();
 
 router.get("/patients", authenticate, controller.getPatients);
+router.get("/patients/:id", authenticate, controller.getSinglePatient);
 
 router.post(
   "/patients", authenticate,
