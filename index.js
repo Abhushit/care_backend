@@ -9,6 +9,7 @@ import multer from "multer";
 import UserRoutes from "./src/users/routes.js";
 import DoctorRoutes from "./src/doctors/routes.js";
 import PatientRoutes from "./src/patients/routes.js";
+import TestRoutes from "./src/tests/routes.js";
 
 import pool from "./db.js";
 
@@ -32,6 +33,7 @@ app.use("/api/v1/images", express.static(join(__dirname, "images")));
 app.use("/api/v1/", UserRoutes);
 app.use("/api/v1/", DoctorRoutes);
 app.use("/api/v1/", PatientRoutes);
+app.use("/api/v1/", TestRoutes);
 
 app.use("/", (req, res) => {
   res.send("NOT FOUND");

@@ -34,9 +34,9 @@ const getSinglePatient = (req, res) => {
 }
 
 const addPatients = (req, res) => {
-  console.log("file", req.files);
+  // console.log("file", req.files);
   // console.log('req',req);
-  console.log("body", req.body);
+  // console.log("body", req.body);
 
   const images = req.files.image;
   let currentImages = [];
@@ -196,7 +196,7 @@ const updatePatient = (req, res) => {
         oldImages = "";
       }
 
-      console.log('body>>>', req.body);
+      // console.log('body>>>', req.body);
       patientData.patient_id = id;
       patientData.doctor_id = req.body.doctor_id ? req.body.doctor_id : result.rows[0].doctor_id;
       patientData.user_id = req.body.user_id ? req.body.user_id : result.rows[0].user_id; 
@@ -253,9 +253,9 @@ const updatePatient = (req, res) => {
         
       }
 
-      console.log('patient data', patientData);
-      console.log('new imgs', newImages);
-      console.log('old imsg', oldImages);
+      // console.log('patient data', patientData);
+      // console.log('new imgs', newImages);
+      // console.log('old imsg', oldImages);
       setTimeout(() => {
         pool.query(queries.updatePatient,[
           patientData.doctor_id,
