@@ -67,6 +67,7 @@ const addTest = (req, res) => {
 };
 
 const updateTest = (req, res) => {
+  console.log("body edit", req.body);
   console.log('files edit', req.files);
 
   const id = req.params.id;
