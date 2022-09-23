@@ -29,6 +29,7 @@ const getSingleTest = (req, res) => {
 
 const addTest = (req, res) => {
   console.log("body", req.body);
+  console.log('files', req.files);
   let allTestlist = [];
 
   const { user_id, testname, active, subtestname, unit, reference_range } =
@@ -66,6 +67,8 @@ const addTest = (req, res) => {
 };
 
 const updateTest = (req, res) => {
+  console.log('files edit', req.files);
+
   const id = req.params.id;
 
   let testData = {
