@@ -45,6 +45,8 @@ const addTest = (req, res) => {
     });
   }
 
+  console.log('allTestlist',allTestlist);
+
   pool.query(
     queries.addTest,
     [
