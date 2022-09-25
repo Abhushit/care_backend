@@ -19,6 +19,8 @@ upload.fields([{
 );
 
 router.put("/patients/:id", authenticate, upload.fields([{ name: 'image', maxCount: 10 }]), controller.updatePatient);
+router.put("/patients/report/:id", authenticate, controller.updateFindings);
+
 router.delete("/patients/:id", authenticate, controller.deletePatient);
 
 export default router;

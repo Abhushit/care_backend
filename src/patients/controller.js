@@ -36,11 +36,12 @@ const getSinglePatient = (req, res) => {
 const addPatients = (req, res) => {
   // console.log("file", req.files);
   // console.log('req',req);
-  // console.log("body", req.body);
+  console.log("body", req.body);
 
   const images = req.files.image;
   let currentImages = [];
   let allDocuments = [];
+  // let allTests = [];
   const {
     doctor_id,
     user_id,
@@ -66,7 +67,8 @@ const addPatients = (req, res) => {
     // created_at,
     title,
     notes,
-    active
+    active,
+    tests
   } = req.body;
 
   if(images){
@@ -116,6 +118,7 @@ const addPatients = (req, res) => {
       // created_at,
       new Date(),
       active,
+      tests,
       allDocuments.map(docs => [
         docs.title, docs.notes, docs.image
     ]),
@@ -130,6 +133,7 @@ const addPatients = (req, res) => {
 };
 
 const updatePatient = (req, res) => {
+  console.log('patient update body', req.body);
   const id = req.params.id;
   const images = req.files.image;
   var newImages, oldImages;
@@ -161,6 +165,7 @@ const updatePatient = (req, res) => {
     transferred_to: "",
     updated_at: "",
     active: true,
+    tests: [],
     documents: [],
     title: [],
     notes: [],
@@ -220,6 +225,7 @@ const updatePatient = (req, res) => {
       patientData.referred_by = req.body.referred_by ? req.body.referred_by : result.rows[0].referred_by; 
       patientData.transferred_to = req.body.transferred_to ? req.body.transferred_to : result.rows[0].transferred_to; 
       patientData.active = req.body.active ? req.body.active : result.rows[0].active; 
+      patientData.tests = req.body.tests ? req.body.tests : result.rows[0].tests; 
       patientData.updated_at = new Date(); 
       
       if(req.body.title){
@@ -281,6 +287,7 @@ const updatePatient = (req, res) => {
           patientData.transferred_to,
           patientData.updated_at,
           patientData.active,
+          patientData.tests,
           patientData.documents.map(doc => [
             doc.title, doc.notes, doc.image
           ]),
@@ -305,6 +312,23 @@ const updatePatient = (req, res) => {
       },500)
 
     }
+  })
+
+}
+
+const updateFindings = (req,res) => {
+  console.log('req findings >>>', req.body);
+
+  const { findings } = req.body;
+  const id = req.params.id;
+
+  pool.query(queries.updateFindings, [
+    findings.map(fin => [fin]) , id
+  ], (err, result) => {
+    if (err) throw err;
+    res.status(200).json({
+      msg:"Patient Report Updated Successfully",
+    })
   })
 
 }
@@ -335,5 +359,6 @@ export default {
   addPatients,
   deletePatient,
   updatePatient,
-  getSinglePatient
+  getSinglePatient,
+  updateFindings
 };
