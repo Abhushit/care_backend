@@ -68,7 +68,8 @@ const addPatients = (req, res) => {
     title,
     notes,
     active,
-    tests
+    tests,
+    findings
   } = req.body;
 
   if(images){
@@ -119,6 +120,7 @@ const addPatients = (req, res) => {
       new Date(),
       active,
       tests,
+      findings,
       allDocuments.map(docs => [
         docs.title, docs.notes, docs.image
     ]),
@@ -165,6 +167,7 @@ const updatePatient = (req, res) => {
     transferred_to: "",
     updated_at: "",
     active: true,
+    findings: [],
     tests: [],
     documents: [],
     title: [],
@@ -225,6 +228,7 @@ const updatePatient = (req, res) => {
       patientData.referred_by = req.body.referred_by ? req.body.referred_by : result.rows[0].referred_by; 
       patientData.transferred_to = req.body.transferred_to ? req.body.transferred_to : result.rows[0].transferred_to; 
       patientData.active = req.body.active ? req.body.active : result.rows[0].active; 
+      patientData.findings = req.body.findings ? req.body.findings : result.rows[0].findings; 
       patientData.tests = req.body.tests ? req.body.tests : result.rows[0].tests; 
       patientData.updated_at = new Date(); 
       
@@ -288,6 +292,7 @@ const updatePatient = (req, res) => {
           patientData.updated_at,
           patientData.active,
           patientData.tests,
+          patientData.findings,
           patientData.documents.map(doc => [
             doc.title, doc.notes, doc.image
           ]),
