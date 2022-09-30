@@ -329,7 +329,7 @@ const updateFindings = (req,res) => {
   
 
   pool.query(queries.updateFindings, [
-    findings.map(fin => fin.map(f => [f])) , id
+    findings.map(fin => fin.map(f => f) , id
   ], (err, result) => {
     if (err) throw err;
     res.status(200).json({
