@@ -331,7 +331,7 @@ const updateFindings = (req,res) => {
 
 
   pool.query(queries.updateFindings, [
-    findings.map(find => ('[' + find.map(f => (`"`+f+`"`)) + ']')), id
+    findings.map(find => ('[' + find.map(f => f) + ']')), id
   ], (err, result) => {
     if (err) throw err;
     res.status(200).json({
