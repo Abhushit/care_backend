@@ -69,6 +69,7 @@ const login = (req, res) => {
   const { email, password } = req.body;
   //check if email matches
   pool.query(queries.checkEmailExists, [email], (err, result) => {
+    console.log('result', result);
     if (result.rows.length) {
       const user = result.rows[0];
       // console.log("user", user);

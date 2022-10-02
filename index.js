@@ -13,6 +13,7 @@ import TestRoutes from "./src/tests/routes.js";
 
 import pool from "./db.js";
 
+
 dotenv.config();
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
