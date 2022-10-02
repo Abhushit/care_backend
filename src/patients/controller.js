@@ -327,6 +327,8 @@ const updateFindings = (req,res) => {
   const { findings } = req.body;
   const id = req.params.id;
 
+  console.log('current',`${findings.map(find => find)}`);
+
   pool.query(queries.updateFindings, [
     findings.map(find => find), id
   ], (err, result) => {
