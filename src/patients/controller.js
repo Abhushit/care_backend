@@ -329,6 +329,7 @@ const updateFindings = (req,res) => {
 
   console.log('current',`${findings}`);
 
+  
   pool.query(queries.updateFindings, [
     findings, id
   ], (err, result) => {
