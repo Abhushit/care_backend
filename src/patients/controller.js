@@ -12,6 +12,18 @@ const getPatients = (req, res) => {
     if (err) throw err;
     res.status(200).json(result.rows);
   });
+  // try{
+  //   const data = await pool.query(queries.getPatients);
+  //   res.status(200).json(data.rows);
+  // }
+  // catch(err){
+  //   if(err){
+  //     res.json({
+  //       msg: "Fetching Patients went wrong"
+  //     })
+  //   }
+  // }
+
 };
 
 const getSinglePatient = (req, res) => {
@@ -77,6 +89,8 @@ const addPatients = (req, res) => {
     currentImages.push(`${process.env.ROOT_URL}/api/v1/images/${img.filename}`);
     });
   }
+  
+  console.log('title>>', title)
 
   if(title){
     allDocuments = title.map((val, index) => {
@@ -90,7 +104,7 @@ const addPatients = (req, res) => {
 
 
   //   console.log("current images", currentImages);
-  // console.log("all documents", allDocuments);
+  console.log("all documents", allDocuments);
 
   pool.query(
     queries.addPatients,
