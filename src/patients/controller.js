@@ -86,7 +86,7 @@ const addPatients = (req, res) => {
 
   if(images){
     images.map((img) => {
-    currentImages.push(`${process.env.ROOT_URL}/api/v1/images/${img.filename}`);
+    currentImages.push(`${process.env.ROOT_URL}/api/v1/images/${img.filename}`)
     });
   }
 
