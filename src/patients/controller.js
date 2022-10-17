@@ -91,7 +91,7 @@ const addPatients = (req, res) => {
   }
 
 
-  if(typeof(title) == "string"){
+  if(typeof(title) === "string"){
     allDocuments = [{
       title: title,
       notes: notes,
@@ -109,7 +109,7 @@ const addPatients = (req, res) => {
   }
 
 
-  //   console.log("current images", currentImages);
+    console.log("current images", currentImages);
   console.log("all documents", allDocuments);
 
   pool.query(
