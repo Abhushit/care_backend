@@ -89,10 +89,16 @@ const addPatients = (req, res) => {
     currentImages.push(`${process.env.ROOT_URL}/api/v1/images/${img.filename}`);
     });
   }
-  
-  console.log('title>>', title)
 
-  if(title){
+
+  if(typeof(title) == "string"){
+    allDocuments = [{
+      title: title,
+      notes: notes,
+      image: currentImages[0],
+    }]
+  }
+  else{
     allDocuments = title.map((val, index) => {
       return {
         title: val,
